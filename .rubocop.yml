@@ -15,9 +15,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
 Layout/SpaceAroundOperators:
   Enabled: true
 
-Layout/IndentationWidth:
-  Enabled: true
-
 Layout/EmptyLineAfterGuardClause:
   Enabled: true
 

@@ -9,3 +9,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "faker"
+
+10.times do
+  Customer.create!(name: Faker::Name.name, email: Faker::Internet.email, phone: Faker::PhoneNumber.phone_number, gender: ["male", "female"].sample)
+end
+50.times do
+  Order.create!(customer: Customer.all.sample, order_date: Faker::Date.between(from: 35.days.ago, to: Date.today), status: ["pending", "completed", "cancelled"].sample)
+end

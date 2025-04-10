@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,4 +14,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  mount Sidekiq::Web => "/sidekiq"
+
+  namespace :api do
+    namespace :v1 do
+      scope "customers" do
+        get "frequent" => "customers#frequent_customers"
+        post "upload_csv" => "customers#import_customers"
+      end
+    end
+  end
 end

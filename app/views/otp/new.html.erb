@@ -1,0 +1,12 @@
+<h2>Enter One-Time Password</h2>
+<p>An OTP has been sent to <%= @staff.email %>. Please enter it below.</p>
+
+<%= form_with url: otp_index_path, method: :post, local: true do |f| %>
+  <%= f.label :otp, 'OTP' %>
+  <%= f.text_field :otp, required: true, autofocus: true %>
+  <%= f.check_box :remember_device, value: "1" %>
+  <%= f.label :remember_device, 'Remember this device for 30 days' %>
+  <%= f.submit 'Verify OTP' %>
+<% end %>
+
+<%= link_to 'Resend OTP', new_otp_path, method: :post %>

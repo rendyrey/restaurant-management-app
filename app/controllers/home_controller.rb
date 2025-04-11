@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  before_action :authenticate_staff!
-  before_action :verify_otp!
+  before_action :authenticate_staff!, only: %i[index]
+  before_action :verify_otp!, only: %i[index]
 
-  def index
-  end
+  def index; end
 
-  def coba
-  end
+  def reservations; end
 
   private
 

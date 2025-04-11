@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "reservations" => "home#reservations"
+
   # Devise generates a set of helper methods tailored to your Staff model, including authenticate_staff!.
   devise_for :staffs, controllers: { sessions: "staffs/sessions" }
 

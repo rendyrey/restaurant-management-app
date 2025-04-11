@@ -26,5 +26,11 @@
     <div class="mt-4 text-center text-sm text-gray-600">
       <%= render "staffs/shared/links" %>
     </div>
+
+    <div class="flex justify-center mt-8">
+      <div>
+        <%= link_to 'Go to reservation', '/reservations', data: { turbo_method: :get }, class: 'bg-gray-300 hover:bg-yellow-300 text-black font-medium py-2 px-4 rounded-md transition-colors' %>
+      </div>
+    </div>
   </section>
 </div>

@@ -1,0 +1,21 @@
+<!-- Book a Table Section -->
+<div class="w-full lg:w-1/2 mx-auto bg-white p-6 mt-6 rounded-md">
+<div data-controller="reservation" class="space-y-4">
+    <h3 class="text-lg font-semibold text-gray-800">Book a Table</h3>
+    <%= form_with url: "/api/v1/reservations/book", method: :post, local: true, data: { action: "submit->reservation#bookTable", "reservation-target": "form" }, html: { class: "space-y-4" } do |f| %>
+    <div class="space-y-1">
+        <%= f.label :customer_id, "Customer", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Select a customer" }, { required: true, class: "w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500" } %>
+    </div>
+    <div class="space-y-1">
+        <%= f.label :table_number, "Table Number", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :table_number, required: true, class: "w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500", placeholder: "e.g., 123" %>
+    </div>
+    <div class="space-y-1">
+        <%= f.label :reserved_at, "Reservation Time", class: "block text-sm font-medium text-gray-700" %>
+        <%= f.datetime_local_field :reserved_at, required: true, class: "w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+    </div>
+    <%= f.submit "Book Table", class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors cursor-pointer", data: { "reservation-target": "submit" } %>
+    <% end %>
+    <div data-reservation-target="message" class="hidden"></div>
+</div>

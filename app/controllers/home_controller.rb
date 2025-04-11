@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   before_action :authenticate_staff!
   before_action :verify_otp!
 
   def index
-
   end
 
   def coba
-
   end
 
   private

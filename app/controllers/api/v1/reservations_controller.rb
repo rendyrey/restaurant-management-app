@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::ReservationsController < ApplicationController
+  def index; end
   def book_table
     begin
       reservation = Reservation.create!(reservation_params)

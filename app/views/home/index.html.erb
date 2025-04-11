@@ -17,7 +17,33 @@
       <p class="text-gray-600">
         This is your restaurant management dashboard. Only signed-in staff can access this page.
       </p>
-      <%= link_to 'Coba', coba_path %>
+
+      <div class="flex flex-col gap-4">
+        <!-- Existing Buttons -->
+        <div class="flex gap-4">
+          <%= link_to "Today’s Reservations", "/api/v1/reservations/today", class: "bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors", target: "_blank" %>
+        </div>
+
+        <!-- Frequent Customers Section -->
+        <div data-controller="customers" class="space-y-4">
+          <%= link_to "View Frequent Customers", "#", data: { action: "click->customers#fetchCustomers" }, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors inline-block" %>
+          <div data-customers-target="list" class="hidden bg-gray-50 p-4 rounded-md shadow-inner">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Frequent Customers</h3>
+            <ul class="space-y-2" data-customers-target="customerList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-controller="csv-upload" class="space-y-4">
+        <h3 class="text-lg font-semibold text-gray-800">Upload Customer CSV</h3>
+        <%= form_with url: "/api/v1/customers/upload_csv", method: :post, multipart: true, data: { action: "submit->csv-upload#uploadCsv", "csv-upload-target": "form" }, html: { class: "space-y-4" } do |f| %>
+          <div>
+            <%= f.file_field :file, accept: ".csv", required: true, class: "block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" %>
+          </div>
+          <%= f.submit "Upload CSV", class: "bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors cursor-pointer", data: { "csv-upload-target": "submit" } %>
+        <% end %>
+        <div data-csv-upload-target="message" class="hidden"></div>
+      </div>
     </section>
   </main>
 

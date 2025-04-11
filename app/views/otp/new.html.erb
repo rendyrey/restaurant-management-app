@@ -1,12 +1,44 @@
-<h2>Enter One-Time Password</h2>
-<p>An OTP has been sent to <%= @staff.email %>. Please enter it below.</p>
+<!-- app/views/otp/new.html.erb -->
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="w-full max-w-md p-6">
+    <section class="bg-white rounded-lg shadow p-6">
+      <!-- Flash Messages -->
+      <% if notice %>
+        <div class="mb-4 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 rounded-md">
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="mb-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700 rounded-md">
+          <%= alert %>
+        </div>
+      <% end %>
 
-<%= form_with url: otp_index_path, method: :post, local: true do |f| %>
-  <%= f.label :otp, 'OTP' %>
-  <%= f.text_field :otp, required: true, autofocus: true %>
-  <%= f.check_box :remember_device, value: "1" %>
-  <%= f.label :remember_device, 'Remember this device for 30 days' %>
-  <%= f.submit 'Verify OTP' %>
-<% end %>
+      <!-- Heading -->
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Enter One-Time Password</h2>
+      <p class="text-gray-600 mb-6 text-center">
+        An OTP has been sent to <span class="font-medium"><%= @staff.email %></span>. Please enter it below.
+      </p>
 
-<%= link_to 'Resend OTP', new_otp_path, method: :post %>
+      <!-- OTP Form -->
+      <%= form_with url: otp_index_path, method: :post, local: true, html: { class: "space-y-6" } do |f| %>
+        <div class="space-y-1">
+          <%= f.label :otp, "OTP", class: "block text-sm font-medium text-gray-700" %>
+          <%= f.text_field :otp, required: true, autofocus: true, class: "w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500", placeholder: "Enter OTP" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= f.check_box :remember_device, { value: "1", class: "h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" }, "1", "0" %>
+          <%= f.label :remember_device, "Remember this device for 30 days", class: "ml-2 text-sm text-gray-600" %>
+        </div>
+
+        <%= f.submit "Verify OTP", class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200" %>
+      <% end %>
+
+      <!-- Resend OTP Link -->
+      <div class="mt-4 text-center">
+        <%= link_to "Resend OTP", "/otp/resend", data: { turbo_method: :post }, class: "text-indigo-600 hover:text-indigo-700 text-sm font-medium" %>
+      </div>
+    </section>
+  </div>
+</div>

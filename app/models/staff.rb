@@ -12,7 +12,7 @@ class Staff < ApplicationRecord
     self.otp_token = Digest::SHA256.hexdigest(otp_secret)
     self.otp_token_expires_at = 15.minutes.from_now
     save!
-    StaffMailer.otp_email(self).deliver_later
+    StaffMailer.otp_email(self).deliver_now
   end
 
   def valid_otp?(otp)
@@ -26,5 +26,9 @@ class Staff < ApplicationRecord
     self.otp_token = nil
     self.otp_token_expires_at = nil
     save!
+  end
+
+  def otp_verified?
+    otp_token.nil? && otp_token_expires_at.nil?
   end
 end

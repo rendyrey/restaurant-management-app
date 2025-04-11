@@ -16,7 +16,7 @@ class Staffs::SessionsController < Devise::SessionsController
       else
         resource.generate_otp
         session[:staff_id_for_otp] = resource.id
-        redirect_to new_otp_path
+        redirect_to new_otp_path, notice: "Please enter your One-Time Password."
       end
     else
       super

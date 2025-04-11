@@ -8,6 +8,8 @@ class HomeController < ApplicationController
 
   def reservations; end
 
+  def today_reservations; end
+
   private
 
   def verify_otp!

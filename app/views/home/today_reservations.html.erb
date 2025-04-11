@@ -1,0 +1,43 @@
+<!-- app/views/home/today_reservations.html.erb -->
+<div class="min-h-screen flex flex-col bg-gray-100">
+  <!-- Header -->
+  <header class="bg-indigo-700 text-white py-4 px-6 flex justify-between items-center shadow-md">
+    <h1 class="text-2xl font-bold">
+      Today’s Reservations
+    </h1>
+    <nav>
+      <%= link_to "Back to Dashboard", root_path, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition-colors" %>
+      <%= link_to "Sign Out", destroy_staff_session_path, data: { turbo_method: :delete }, class: "bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-colors ml-2" %>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="mx-auto py-8 px-4 w-full grow">
+    <section class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Confirmed Reservations for <%= Date.today.strftime('%B %d, %Y') %></h2>
+      <div data-controller="today-reservations" class="space-y-4">
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-gray-50 rounded-md shadow-inner">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Reservation ID</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Customer Name</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Table Number</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Reserved At</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Status</th>
+              </tr>
+            </thead>
+            <tbody data-today-reservations-target="tableBody" class="divide-y divide-gray-200">
+              <tr><td colspan="5" class="p-4 text-gray-600">Loading today’s reservations...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-700 text-white text-center py-4">
+    <p>© <%= Time.now.year %> Restaurant Management App</p>
+  </footer>
+</div>

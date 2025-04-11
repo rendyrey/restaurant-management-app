@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   mount Sidekiq::Web => "/sidekiq"
 
+  get "coba" => "home#coba"
+
   namespace :api do
     namespace :v1 do
       scope "customers" do

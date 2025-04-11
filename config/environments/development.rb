@@ -41,16 +41,6 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 465,
-    domain: "gmail.com",
-    user_name: "info.mediamonitor.id@gmail.com",
-    password: "infrpewowouyhqlt",
-    authentication: "plain",
-    ssl: true,
-    enable_starttls_auto: false # Gmail uses SSL directly, not STARTTLS
-  }
   config.action_mailer.perform_deliveries = true
 
   # Set localhost to be used by links generated in mailer templates.

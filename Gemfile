@@ -58,10 +58,12 @@ group :development, :test do
   gem "faker"
   gem "shoulda-matchers"
   gem "letter_opener"
+  gem "foreman"
 end
 
 gem "sidekiq"
 gem "devise"
+gem "tailwindcss-rails"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

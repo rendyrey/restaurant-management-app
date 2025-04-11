@@ -64,6 +64,7 @@ end
 gem "sidekiq"
 gem "devise"
 gem "tailwindcss-rails"
+gem "kaminari" # for pagination
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

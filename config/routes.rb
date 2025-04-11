@@ -32,6 +32,10 @@ Rails.application.routes.draw do
         get "today" => "reservations#confirmed_reservations"
         post "book" => "reservations#book_table"
       end
+
+      scope "orders" do
+        get "" => "orders#index"
+      end
     end
   end
 

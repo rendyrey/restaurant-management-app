@@ -44,6 +44,38 @@
         <% end %>
         <div data-csv-upload-target="message" class="hidden"></div>
       </div>
+
+      <hr>
+      <!-- Order Status Tracking Section -->
+      <div data-controller="orders" class="space-y-4">
+        <div class="flex justify-between items-center my-5">
+          <h3 class="text-lg font-semibold text-gray-800">Order Status Tracking</h3>
+          <select data-orders-target="filter" data-action="change->orders#filterOrders" class="border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+            <option value="">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="preparing">Preparing</option>
+            <option value="ready">Ready</option>
+            <option value="delivered">Delivered</option>
+          </select>
+        </div>
+        <div class="overflow-x-auto max-h-full overflow-y-auto">
+          <table class="min-w-full bg-gray-50 rounded-md shadow-inner">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Order ID</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Customer Name</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Customer Email</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Status</th>
+                <th class="p-4 text-left text-sm font-semibold text-gray-700">Created At</th>
+              </tr>
+            </thead>
+            <tbody data-orders-target="tableBody" class="divide-y divide-gray-200">
+              <tr><td colspan="4" class="p-4 text-gray-600">Loading orders...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div data-orders-target="pagination" class="mt-4"></div>
+      </div>
     </section>
   </main>
 

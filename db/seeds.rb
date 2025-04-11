@@ -16,7 +16,7 @@ require "faker"
   Customer.create!(name: Faker::Name.name, email: Faker::Internet.email, phone: Faker::PhoneNumber.phone_number, gender: ["male", "female"].sample)
 end
 50.times do
-  Order.create!(customer: Customer.all.sample, order_date: Faker::Date.between(from: 35.days.ago, to: Date.today), status: ["pending", "completed", "cancelled"].sample)
+  Order.create!(customer: Customer.all.sample, order_date: Faker::Date.between(from: 35.days.ago, to: Date.today), status: ["pending", "ready", "preparing", "delivered"].sample)
 end
 
 (1..15).each do |i|

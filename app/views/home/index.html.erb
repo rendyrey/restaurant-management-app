@@ -1,0 +1,27 @@
+<!-- app/views/home/index.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home - Restaurant Management</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <header>
+    <h1>Welcome, <%= current_staff.email %>!</h1>
+    <nav>
+      <%= link_to 'Sign Out', destroy_staff_session_path, method: :delete, class: 'btn sign-out-btn' %>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Staff Dashboard</h2>
+      <p>This is your restaurant management dashboard. Only signed-in staff can access this page.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <%= Time.now.year %> Restaurant Management App</p>
+  </footer>
+</body>
+</html>

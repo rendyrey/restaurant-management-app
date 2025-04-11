@@ -3,6 +3,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  root "home#index"
   # get "otp/new"
   # get "otp/create"
   # devise_for :staffs
@@ -34,7 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Devise generates a set of helper methods tailored to your Staff model, including authenticate_staff!.
   devise_for :staffs, controllers: { sessions: "staffs/sessions" }
+
   resources :otp, only: [:new, :create] do
     post :resend, on: :collection
   end

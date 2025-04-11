@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Staffs::SessionsController < ApplicationController
+class Staffs::SessionsController < Devise::SessionsController
   before_action :check_otp, only: [:create]
   before_action :check_remembered_device, only: [:create]
 

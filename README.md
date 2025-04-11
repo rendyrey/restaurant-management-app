@@ -47,6 +47,11 @@ rails db:seed
 ```sh
 ./bin/dev
 ```
+- open another terminal tun run sidekiq
+```
+bundle exec sidekiq
+```
+
 - By default the url will be: <code>localhost:3000</code>
 
 ## Postman Collection

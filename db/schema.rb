@@ -38,7 +38,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_09_064144) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id", "reserved_at"], name: "index_reservations_on_customer_id_and_reserved_at", unique: true
     t.index ["customer_id"], name: "index_reservations_on_customer_id"
+    t.index ["reserved_at"], name: "index_reservations_on_reserved_at"
   end
 
   add_foreign_key "orders", "customers"

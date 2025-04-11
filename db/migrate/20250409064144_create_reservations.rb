@@ -9,5 +9,8 @@ class CreateReservations < ActiveRecord::Migration[8.0]
       t.string :status
       t.timestamps
     end
+
+    add_index :reservations, :reserved_at
+    add_index :reservations, [:customer_id, :reserved_at], unique: true
   end
 end

@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class Api::V1::CustomersController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :validate_file!, only: :upload_csv
 
   def frequent_customers
-    customers = Customer.loyal_customers.includes(:orders)
-    render json: customers.as_json(include: :orders), status: :ok
+    customers = Customer.loyal_customers.includes(:recent_orders)
+    render json: customers.as_json(include: :recent_orders), status: :ok
   end
 
   def upload_csv

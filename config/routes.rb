@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "sidekiq/web"
 
 Rails.application.routes.draw do
@@ -20,7 +21,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       scope "customers" do
         get "frequent" => "customers#frequent_customers"
-        post "upload_csv" => "customers#import_customers"
+        post "upload_csv" => "customers#upload_csv"
+      end
+
+      scope "reservations" do
+        get "today" => "reservations#confirmed_reservations"
+        post "book" => "reservations#book_table"
       end
     end
   end

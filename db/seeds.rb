@@ -18,3 +18,7 @@ end
 50.times do
   Order.create!(customer: Customer.all.sample, order_date: Faker::Date.between(from: 35.days.ago, to: Date.today), status: ["pending", "completed", "cancelled"].sample)
 end
+
+(1..15).each do |i|
+  Reservation.create!(customer: Customer.all.sample, table_number: i, reserved_at: Faker::Time.between(from: 2.hours.from_now, to: 24.hours.from_now), status: ["pending", "confirmed", "cancelled"].sample)
+end
